@@ -1,0 +1,58 @@
+{% extends 'raiz.html' %}
+{% load static %}
+{% block titulo %}Contacto{% endblock %}
+{% block contenido %}
+    <div class="container">
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">
+                        <strong>Contactate con Nosotros</strong>
+                    </h2>
+                    <hr>
+                </div>
+                <div class="col-md-8">
+                    <a href="https://www.google.com.ar/maps/place/J.+M.+Estrada+247,+Met%C3%A1n,+Salta/@-25.4946523,-64.9824692,17z/data=!3m1!4b1!4m5!3m4!1s0x9419af417f23b2d1:0x340dfbd6ec156f2f!8m2!3d-25.494652!4d-64.98028?hl=es-419" target="_blank" ><img class="img-responsive img-border img-full" src="{% static 'img/slide-5.jpg' %}" alt=""></a>
+                </div>
+
+                <div class="col-md-4">
+                    <p>Telefono:</p>
+                       <p> <strong>(03876) 420181</strong>
+                    </p>
+                     <p>Celular:</p>
+                       <p> <strong>(03876) 15663536</strong>
+                    </p>
+                    <p>Email:</p>
+                       <p><strong>martineztransporte@hotmail.com</strong>
+                    </p>
+                    <p>Direccion:</p>
+                        <p><strong>Jose Manuel Estrada 247,
+                           <br>frente a ruta 34/9</strong>
+                    </p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-10">
+                    <hr>
+                    <h2 class="intro-text text-center">
+                        <strong>Consulta</strong>
+                    </h2>
+                    <hr>
+                    <p>Podes enviarnos tu consulta completando el siguiente formulario o bien comunicándote directamente a los contactos de la parte superior. </p>
+                    <div class="col-lg-8">
+                        <form action="" method="POST" enctype="multipart/form-data" class="form-group col-lg-12" id="formulario">{% csrf_token %}
+                                {{formulario.as_p}}
+                            <div class="form-group col-xs-14">
+                             <button type="submit" class="btn btn-default">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

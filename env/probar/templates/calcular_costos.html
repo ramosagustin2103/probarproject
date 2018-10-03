@@ -1,0 +1,149 @@
+{% extends 'raiz.html' %}
+{% load static %}
+{% block titulo %}calculadora{% endblock %}
+{% block contenido %}
+<html>
+<head>
+	<title>Buscar</title>
+<link href="{% static 'css/calcu.css' %}" rel="stylesheet">
+</head>
+<body>
+
+
+     
+
+
+
+
+            <div class="col-md-12" id="tabla_precios">
+                        <div class="content-panel">
+                          <table class="table">
+                              <thead>
+                              <tr>
+                                  <th></th>
+                                  <th></th>
+                                  <th></th>
+                                  <th></th>
+                                  <th></th>
+                                  <th></th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              {% if precios %}
+                              {% for precio in precios %}
+
+                              <tr>
+                                  <input id='precio_x_km_1' value='{{precio.precio_x_km_1}}' readonly=”readonly”/>
+                                  <input id='precio_x_km_2' value='{{precio.precio_x_km_2}}' readonly=”readonly”/>
+                                  <input id='precio_x_km_3' value='{{precio.precio_x_km_3}}' readonly=”readonly”/>
+                                  <input id='limite_1' value='{{precio.limite_1}}' readonly=”readonly”/>
+                                  <input id='limite_2' value='{{precio.limite_2}}' readonly=”readonly”/>
+                                  <input id='limite_3' value='{{precio.limite_3}}' readonly=”readonly”/>
+                              </tr>
+                              {% endfor %}
+                              {% endif %}
+                              
+                              </tbody>
+                          </table>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="peso" id="peso" />
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="distancia" id="distancia" />
+        </div>
+        <div class="form-group">
+        <button class="btn btn-primary btn-block mt-5" type="button" id="boton">Calcular</button>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    <form method="POST" action="{% url "guardar" %}">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="valor" name="valor" id="content" readonly=”readonly”/>
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" type="text" name="peso" id="content1" readonly=”readonly”/>
+        </div>
+        
+        <div class="form-group">
+            <input class="form-control" type="text" name="distancia" id="content2" readonly=”readonly”/>
+        </div>
+
+        <button class="btn btn-primary btn-block mt-5" type="submit">Guardar</button>
+    </form>
+
+
+	<p></p>
+
+        <button class="btn btn-primary btn-block mt-5" type="button" id="boton1">Limpiar</button>
+        </div>
+
+
+
+
+
+
+
+ 						<div class="col-md-12">
+	                  	  <div class="content-panel">
+	                  	  	  <h4><i class="fa fa-angle-right"></i> Tus Calculos</h4>
+	                  	  	  <hr>
+		                      <table class="table">
+		                          <thead>
+		                          <tr>
+		                              <th>Usuario</th>
+		                              <th>Peso</th>
+		                              <th>Distancia</th>
+		                              <th>Precio</th>
+		                              <th>Fecha</th>
+		                          </tr>
+		                          </thead>
+		                          <tbody>
+		                          {% if registros %}
+		                          {% for registro in registros %}
+
+		                          <tr>
+		                              <td>{{registro.profile}}</td>
+		                              <td>{{registro.peso}}</td>
+		                              <td>{{registro.distancia}}</td>
+		                              <td>{{registro.valor}}</td>
+		                              <td>{{registro.created}}</td>
+		                          </tr>
+		                          {% endfor %}
+		                          {% endif %}
+		                          
+		                          </tbody>
+		                      </table>
+	                  	  </div>
+	                  </div>
+
+
+
+
+
+
+<script src="{% static 'js/calculadora.js' %}"></script>
+
+</body>
+</html>
+{% endblock %}

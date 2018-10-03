@@ -1,0 +1,35 @@
+{% extends 'raiz.html' %}
+{% load static %}
+{% block titulo %}Iniciar Sesion{% endblock %}
+{% block contenido %}
+    {% if error %}
+        <p class="alert alert-danger">{{ error }}</p>
+    {% endif%}
+            <p class="alert alert-danger">Debes iniciar sesion para ingresar a nuestro sistema de calculo de costos de transporte on line....</p>
+
+    <form method="POST" action="{% url "login_views" %}">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Usuario" name="username" />
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" type="password" placeholder="Contraseña" name="password" />
+        </div>
+
+
+        <button class="btn btn-primary btn-block mt-5" type="submit">Entrar</button>
+
+    </form>
+
+        <p></p>
+
+        <div class="form-group">
+        <a href="{% url "signup_views" %}">
+        <button class="btn btn-primary btn-block mt-5" type="submit">Registrarse</button>
+        </a>
+       </div>
+       
+
+{% endblock %}
